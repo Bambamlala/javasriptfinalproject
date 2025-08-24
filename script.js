@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookNowBtn = document.querySelector('.book-now-btn');
     const popupOverlay = document.getElementById('popup-overlay');
     const closePopupBtn = document.getElementById('close-popup-btn');
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navLinks = document.getElementById('navLinks');
+    const menuAndSearch = document.querySelector('.menu-and-search');
 
     if (searchBtn && resetBtn && searchInput && resultsContainer) {
         function fetchRecommendations(query) {
@@ -19,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(data => {
                     const lowerCaseQuery = query.toLowerCase();
                     let results = [];
-
                     if (lowerCaseQuery.includes('beach')) {
                         results = data.beaches;
                     } else if (lowerCaseQuery.includes('temple')) {
@@ -45,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     popupOverlay.style.display = 'flex';
                 });
         }
-
         function displayResults(results, query) {
             resultsContainer.innerHTML = '';
             if (results.length === 0) {
@@ -54,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 results.forEach(item => {
                     const card = document.createElement('div');
                     card.className = 'recommendation-card';
-                    
                     let time = '';
                     if (item.name.includes('Sydney')) {
                         time = getCountryTime('Australia/Sydney');
@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (item.name.includes('Rio de Janeiro')) {
                         time = getCountryTime('America/Sao_Paulo');
                     }
-                    
                     card.innerHTML = `
                         <img src="${item.imageUrl}" alt="${item.name}">
                         <div class="card-content">
@@ -75,16 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultsContainer.appendChild(card);
                 });
             }
-
             popupOverlay.style.display = 'flex';
         }
-
         function clearResults() {
             resultsContainer.innerHTML = '';
             searchInput.value = '';
-            popupOverlay.style.display = 'none'; // Hide the pop-up
+            popupOverlay.style.display = 'none';
         }
-
         searchBtn.addEventListener('click', () => {
             const query = searchInput.value.trim();
             if (query) {
@@ -93,15 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Please enter a keyword to search.');
             }
         });
-
         resetBtn.addEventListener('click', clearResults);
-
         if (closePopupBtn) {
             closePopupBtn.addEventListener('click', () => {
                 popupOverlay.style.display = 'none';
             });
         }
-
         if (bookNowBtn) {
             bookNowBtn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -109,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -118,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.reset();
         });
     }
-
     function getCountryTime(timeZone) {
         const date = new Date();
         const options = {
@@ -128,5 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
             second: 'numeric'
         };
         return date.toLocaleString('en-US', options);
+    }
+    if (hamburgerMenu && menuAndSearch) {
+        hamburgerMenu.addEventListener('click', () => {
+            menuAndSearch.classList.toggle('active');
+        });
     }
 });
