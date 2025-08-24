@@ -197,10 +197,6 @@ body {
     display: flex;
     gap: 15px;
 }
-.search-container {
-    display: flex;
-    align-items: center;
-}
 .team-section {
     max-width: 900px;
     margin: 40px auto;
@@ -316,20 +312,18 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
-    transition: transform 0.3s ease-in-out;
-}
-.menu-and-search.active {
-    transform: translateX(0);
 }
 @media (max-width: 768px) {
     .navbar {
-        flex-wrap: wrap;
-        padding: 15px 20px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
     }
     .hamburger-menu {
         display: flex;
     }
     .menu-and-search {
+        display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
@@ -338,10 +332,12 @@ body {
         background-color: #004d40;
         padding: 20px;
         box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-        transform: translateX(-100%);
-        display: none;
+        z-index: 9;
     }
-    .nav-links {
+    .menu-and-search.active {
+        display: flex;
+    }
+    .nav-links, .search-container {
         flex-direction: column;
         width: 100%;
         text-align: center;
@@ -354,8 +350,6 @@ body {
         border-bottom: none;
     }
     .search-container {
-        flex-direction: column;
-        width: 100%;
         margin-top: 15px;
     }
     .search-container #searchInput,
