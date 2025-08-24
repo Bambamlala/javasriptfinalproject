@@ -360,3 +360,47 @@ body {
     padding: 20px;
     margin-top: 20px;
 }
+
+/* --- Responsive Design with Media Queries --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+        align-items: flex-start;
+    }
+
+    .search-container {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    #searchInput, #searchBtn, #resetBtn {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .hero-headline {
+        font-size: 2.5em;
+    }
+
+    .hero-description {
+        font-size: 1em;
+    }
+
+    .recommendation-card {
+        width: 100%; /* Full width for cards on smaller screens */
+    }
+
+    .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+}
