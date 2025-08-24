@@ -7,8 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupOverlay = document.getElementById('popup-overlay');
     const closePopupBtn = document.getElementById('close-popup-btn');
     const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const navLinks = document.getElementById('navLinks');
     const menuAndSearch = document.querySelector('.menu-and-search');
+
+    if (hamburgerMenu && menuAndSearch) {
+        hamburgerMenu.addEventListener('click', () => {
+            menuAndSearch.classList.toggle('active');
+        });
+    }
 
     if (searchBtn && resetBtn && searchInput && resultsContainer) {
         function fetchRecommendations(query) {
@@ -44,7 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(error => {
                     console.error('Error fetching data:', error);
                     resultsContainer.innerHTML = `<p>Sorry, an error occurred while fetching data. Please try again later.</p>`;
-                    popupOverlay.style.display = 'flex';
+                    if (popupOverlay) {
+                        popupOverlay.style.display = 'flex';
+                    }
                 });
         }
         function displayResults(results, query) {
@@ -74,12 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultsContainer.appendChild(card);
                 });
             }
-            popupOverlay.style.display = 'flex';
+            if (popupOverlay) {
+                popupOverlay.style.display = 'flex';
+            }
         }
         function clearResults() {
             resultsContainer.innerHTML = '';
             searchInput.value = '';
-            popupOverlay.style.display = 'none';
+            if (popupOverlay) {
+                popupOverlay.style.display = 'none';
+            }
         }
         searchBtn.addEventListener('click', () => {
             const query = searchInput.value.trim();
@@ -119,10 +130,5 @@ document.addEventListener('DOMContentLoaded', () => {
             second: 'numeric'
         };
         return date.toLocaleString('en-US', options);
-    }
-    if (hamburgerMenu && menuAndSearch) {
-        hamburgerMenu.addEventListener('click', () => {
-            menuAndSearch.classList.toggle('active');
-        });
     }
 });
