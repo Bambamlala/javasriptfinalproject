@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Travel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Wanderlust Travel Logo" class="logo">
+                <span class="site-name">Wanderlust Travel</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for a destination...">
+                <button id="searchBtn">Search</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero-section video-background">
+            <video autoplay muted loop class="hero-video">
+                <source src="images/hero-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-content">
+                <h1 class="hero-headline">Discover Your Next Adventure</h1>
+                <p class="hero-description">Explore breathtaking destinations, dive into diverse cultures, and create unforgettable memories with our curated travel recommendations. Your journey starts here.</p>
+                <a href="#" class="book-now-btn">Book Now</a>
+                <div class="social-media">
+                    <a href="https://web.facebook.com/profile.php?id=61570948664589"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="https://x.com/oyebamijibless4"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="https://www.instagram.com/oluwatemilorun001/"><img src="images/instagram.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="popup-overlay">
+        <div id="popup-content">
+            <button id="close-popup-btn">&times;</button>
+            <div id="results-container"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
